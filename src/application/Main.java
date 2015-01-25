@@ -4,7 +4,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 
 public class Main extends Application {
@@ -14,10 +16,11 @@ public class Main extends Application {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Main.fxml"));
 			Parent root = loader.load();
 			((MainController) loader.getController()).stage = stage;
-			Scene scene = new Scene(root);
+			Scene scene = new Scene(root, Color.TRANSPARENT);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			stage.setTitle("JAVAFX PAINT");
 			stage.setScene(scene);
+			stage.initStyle(StageStyle.TRANSPARENT);
 			stage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

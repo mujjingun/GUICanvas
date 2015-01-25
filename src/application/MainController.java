@@ -5,13 +5,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToolBar;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -31,6 +34,8 @@ public class MainController implements Initializable {
 	private ColorPicker colorPicker;
 	@FXML
 	private ToggleButton eraserToggle;
+	@FXML
+	private ToolBar toolbar;
 
 	private GraphicsContext gc;
 	private boolean eraser = false;
@@ -114,6 +119,12 @@ public class MainController implements Initializable {
 	private void mouseUp(MouseEvent event) {
 	}
 
+	@FXML
+	private void exit() {
+		Platform.exit();
+	}
+	
+	private double xOffset, yOffset;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		gc = canvas.getGraphicsContext2D();
@@ -123,6 +134,21 @@ public class MainController implements Initializable {
 		gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 		gc.setLineCap(StrokeLineCap.ROUND);
 		colorPicker.setValue(Color.BLACK);
+		
+		toolbar.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = stage.getX() - event.getScreenX();
+                yOffset = stage.getY() - event.getScreenY();
+            }
+        });
+		toolbar.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                stage.setX(event.getScreenX() + xOffset);
+                stage.setY(event.getScreenY() + yOffset);
+            }
+        });
 	}
 
 }

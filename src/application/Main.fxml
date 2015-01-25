@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.geometry.*?>
@@ -13,12 +16,25 @@
       <Canvas fx:id="canvas" height="400.0" onMouseDragged="#mouseMove" onMousePressed="#mouseDown" onMouseReleased="#mouseUp" style="-fx-cursor: crosshair;" width="400.0" BorderPane.alignment="CENTER" />
    </center>
    <top>
-      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <ToolBar fx:id="toolbar" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <items>
             <Button mnemonicParsing="false" onAction="#save" text="Save" />
             <ToggleButton fx:id="eraserToggle" mnemonicParsing="false" onAction="#eraser" text="Eraser" />
             <Button mnemonicParsing="false" onAction="#fill" text="Fill" />
             <ColorPicker fx:id="colorPicker" onAction="#pickColor" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" JAVAFX PAINT ">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Button mnemonicParsing="false" onAction="#exit" text="X">
+               <effect>
+                  <InnerShadow blurType="GAUSSIAN" choke="0.4" color="RED" />
+               </effect>
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Button>
          </items>
       </ToolBar>
    </top>
