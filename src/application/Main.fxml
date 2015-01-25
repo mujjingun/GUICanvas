@@ -13,13 +13,13 @@
       <Canvas fx:id="canvas" height="400.0" onMouseDragged="#mouseMove" onMousePressed="#mouseDown" onMouseReleased="#mouseUp" style="-fx-cursor: crosshair;" width="400.0" BorderPane.alignment="CENTER" />
    </center>
    <top>
-      <HBox BorderPane.alignment="CENTER">
-         <children>
-            <ColorPicker fx:id="colorPicker" onAction="#pickColor" />
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <items>
+            <Button mnemonicParsing="false" onAction="#save" text="Save" />
             <ToggleButton fx:id="eraserToggle" mnemonicParsing="false" onAction="#eraser" text="Eraser" />
             <Button mnemonicParsing="false" onAction="#fill" text="Fill" />
-            <Button mnemonicParsing="false" onAction="#save" text="Save" />
-         </children>
-      </HBox>
+            <ColorPicker fx:id="colorPicker" onAction="#pickColor" />
+         </items>
+      </ToolBar>
    </top>
 </BorderPane>
