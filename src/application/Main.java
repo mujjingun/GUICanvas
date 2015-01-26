@@ -14,7 +14,7 @@ public class Main extends Application {
 	public void start(Stage stage) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Main.fxml"));
-			Parent root = loader.load();
+			Parent root = (Parent) loader.load();
 			((MainController) loader.getController()).stage = stage;
 			Scene scene = new Scene(root, Color.TRANSPARENT);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
